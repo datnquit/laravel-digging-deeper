@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    \Illuminate\Support\Facades\Artisan::call('datnq:add-new-user {number}');
     return view('welcome');
 });
