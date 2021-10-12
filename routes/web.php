@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SendMailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,8 @@ Route::get('redis', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('send-mail', [SendMailController::class, 'sendMail']);
+
+Route::get('config-mail', [SendMailController::class, 'configMail']);
+Route::post('test-mail', [SendMailController::class, 'testMail']);
