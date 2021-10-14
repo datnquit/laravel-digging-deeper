@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\StudyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +40,5 @@ Route::get('send-mail', [SendMailController::class, 'sendMail']);
 
 Route::get('config-mail', [SendMailController::class, 'configMail']);
 Route::post('test-mail', [SendMailController::class, 'testMail']);
+
+Route::get('store-queue', [StudyController::class, 'storeQueue']);
