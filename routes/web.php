@@ -42,3 +42,20 @@ Route::get('config-mail', [SendMailController::class, 'configMail']);
 Route::post('test-mail', [SendMailController::class, 'testMail']);
 
 Route::get('store-queue', [StudyController::class, 'storeQueue']);
+
+Route::get('welcome/{locale}', [StudyController::class, 'changeLang']);
+
+Route::middleware('localization')->get('echo-lang', function () {
+    echo __('messages.welcome', [
+        'name' => 'Dat'
+    ]);
+    echo "<br>";
+    echo __('messages.field.name');
+    echo "<br>";
+//    {{ __('messages.field.name') }}
+
+    echo __('Welcome to my website');
+    return view('lang');
+});
+
+
