@@ -59,3 +59,21 @@ Route::middleware('localization')->get('echo-lang', function () {
 });
 
 
+use App\Http\Controllers\MultilangController;
+
+Route::prefix('admin')->group(function() {
+    Route::get('multi/create', [MultilangController::class, 'formMulti']);
+
+    Route::post('store-multi', [MultilangController::class, 'storeMulti'])
+        ->name('admin.multi.store');
+
+    Route::get('multi/{id}', [MultilangController::class, 'editMulti']);
+
+    Route::put('multi/{id}', [MultilangController::class, 'updateMulti'])
+        ->name('admin.multi.update');
+});
+// Không cần use LaravelLocalization
+Route::prefix(LaravelLocalization::setLocale())->group(function() {
+    Route::get('multi/{id}', [MultilangController::class, 'detail']);
+});
+

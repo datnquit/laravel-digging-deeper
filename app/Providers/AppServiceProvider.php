@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\SaveLocaleMiddleware;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        require_once __DIR__.'/../Helpers/helpers.php';
     }
 
     /**
@@ -24,6 +26,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->bootMailConfig();
+        $this->registerMiddleware();
+    }
+
+    protected function registerMiddleware()
+    {
+        /** @var Router $router */
+        $router = $this->app['router'];
+        $router->pushMiddlewareToGroup('web', SaveLocaleMiddleware::class);
+
     }
 
     public function bootMailConfig()
