@@ -77,3 +77,9 @@ Route::prefix(LaravelLocalization::setLocale())->group(function() {
     Route::get('multi/{id}', [MultilangController::class, 'detail']);
 });
 
+
+Route::get('test/helper', function () {
+//    return aFunctionName();
+    return \Helper::aFunctionName();
+});
+
