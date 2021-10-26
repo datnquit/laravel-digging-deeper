@@ -83,3 +83,4 @@ Route::get('test/helper', function () {
     return \Helper::aFunctionName();
 });
 
+Route::get('http-client', [StudyController::class, 'httpClient']);
