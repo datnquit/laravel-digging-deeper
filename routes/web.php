@@ -32,10 +32,6 @@ Route::get('redis', function () {
     return view('redis');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('send-mail', [SendMailController::class, 'sendMail']);
 
 Route::get('config-mail', [SendMailController::class, 'configMail']);
