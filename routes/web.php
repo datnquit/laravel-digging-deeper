@@ -80,3 +80,15 @@ Route::get('test/helper', function () {
 });
 
 Route::get('http-client', [StudyController::class, 'httpClient']);
+
+Auth::routes(['verify' => true]);
+
+Route::middleware('password.confirm')->get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/log-info', [App\Http\Controllers\HomeController::class, 'logInfo'])->name('log-info');
+Route::get('/check-login', function () {
+    if (\Illuminate\Support\Facades\Auth::guard('web')->check()) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+});
