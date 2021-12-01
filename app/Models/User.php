@@ -42,4 +42,27 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function avatar()
+    {
+//        return $this->hasOne('App\Models\Avatar');
+//        return $this->hasOne(Avatar::class);
+        return $this->hasOne(Avatar::class, 'user_id', 'id');
+
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    public function newPost()
+    {
+        return $this->hasOne(Post::class, 'user_id', 'id')->latestOfMany();
+    }
+
+    public function post()
+    {
+        return $this->hasOne(Post::class, 'user_id', 'id')->orderByDesc('name');
+    }
 }

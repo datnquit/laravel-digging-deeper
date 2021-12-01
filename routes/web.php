@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RelationshipController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\StudyController;
 use Illuminate\Support\Facades\Route;
@@ -99,3 +100,12 @@ Route::get('comment', [HomeController::class, 'getComment']);
 Route::get('home/{comment_id}', [HomeController::class, 'editComment'])
     ->name('comment.edit');
 
+Route::prefix('relationship')->group(function() {
+    Route::get('avatar', [RelationshipController::class, 'avatar']);
+    Route::get('posts', [RelationshipController::class, 'posts']);
+    Route::get('category', [RelationshipController::class, 'category']);
+    Route::get('category-attach', [RelationshipController::class, 'categoryAttach']);
+    Route::get('category-detach', [RelationshipController::class, 'categoryDetach']);
+    Route::get('category-sync', [RelationshipController::class, 'categorySync']);
+    Route::get('category-pivot', [RelationshipController::class, 'categoryPivot']);
+});
