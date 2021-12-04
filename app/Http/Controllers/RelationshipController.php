@@ -72,4 +72,14 @@ class RelationshipController extends Controller
 
         dd($post);
     }
+
+    public function categoryPost()
+    {
+        $user = User::find(18);
+
+//        dd($user->category);
+        dd($user->categoryPost);
+//        dd($user->categoryPosts);
+//        dd($user->category ? $user->category->post : null);
+    }
 }

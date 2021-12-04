@@ -65,4 +65,22 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Post::class, 'user_id', 'id')->orderByDesc('name');
     }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
+
+    public function categoryPost()
+    {
+//        return $this->hasOneThrough(Post::class, Category::class);
+        return $this->hasOneThrough(Post::class, Category::class)->orderByDesc('category_id');
+    }
+
+
+    public function categoryPosts()
+    {
+        return $this->hasManyThrough(Post::class, Category::class);
+
+    }
 }

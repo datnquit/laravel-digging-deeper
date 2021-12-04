@@ -108,4 +108,7 @@ Route::prefix('relationship')->group(function() {
     Route::get('category-detach', [RelationshipController::class, 'categoryDetach']);
     Route::get('category-sync', [RelationshipController::class, 'categorySync']);
     Route::get('category-pivot', [RelationshipController::class, 'categoryPivot']);
+
+    // P2
+    Route::get('category-post', [RelationshipController::class, 'categoryPost']);
 });
