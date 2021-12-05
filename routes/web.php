@@ -111,4 +111,12 @@ Route::prefix('relationship')->group(function() {
 
     // P2
     Route::get('category-post', [RelationshipController::class, 'categoryPost']);
+
+    // P3
+    Route::get('poly-one-one', [RelationshipController::class, 'polyOneOne']);
+    Route::get('poly-one-many', [RelationshipController::class, 'polyOneMany']);
+    Route::get('poly-one-create', [RelationshipController::class, 'polyOneCreate']);
+
+    Route::get('poly-many-create', [RelationshipController::class, 'polyManyCreate']);
+    Route::get('poly-many-many', [RelationshipController::class, 'polyManyMany']);
 });

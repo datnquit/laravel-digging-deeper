@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    protected $table = 'comments';
+    protected $table = 'images';
+
     protected $fillable = [
-        'content',
-        'user_id'
+        'url',
     ];
 
-    public function commentable()
+    public function imageable()
     {
         return $this->morphTo();
     }
