@@ -119,4 +119,7 @@ Route::prefix('relationship')->group(function() {
 
     Route::get('poly-many-create', [RelationshipController::class, 'polyManyCreate']);
     Route::get('poly-many-many', [RelationshipController::class, 'polyManyMany']);
+
+    // P4
+    Route::get('all-post', [RelationshipController::class, 'allPost']);
 });

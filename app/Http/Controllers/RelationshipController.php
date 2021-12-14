@@ -149,4 +149,18 @@ class RelationshipController extends Controller
 //        dd($post->tags);
     }
 
+    public function allPost()
+    {
+//        $posts = Post::with(['categories' => function($query) {
+//            $query->where('user_id', 18)->with('posts');
+//        }, 'user.image'])->get();
+//        $posts = Post::with('user:id,name')->withCount('categories')->get();
+        $posts = $this->getAllPost()->load('user.image');
+//        dd($posts);
+        return view('relationship.allpost', compact('posts'));
+    }
+
+    private function getAllPost() {
+        return Post::all();
+    }
 }
