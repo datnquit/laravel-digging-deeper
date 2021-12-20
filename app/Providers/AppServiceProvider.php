@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Middleware\SaveLocaleMiddleware;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->bootMailConfig();
         $this->registerMiddleware();
+        Paginator::useBootstrap();
     }
 
     protected function registerMiddleware()

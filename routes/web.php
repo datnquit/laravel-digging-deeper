@@ -127,3 +127,7 @@ Route::prefix('relationship')->group(function() {
     // P5
     Route::get('condition-relationship', [RelationshipController::class, 'conditionRelationship']);
 });
+
+Route::prefix('paginate')->group(function () {
+    Route::get('index', [PaginateController::class, 'index']);
+});
