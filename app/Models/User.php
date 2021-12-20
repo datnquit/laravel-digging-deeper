@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function post()
     {
-        return $this->hasOne(Post::class, 'user_id', 'id')->orderByDesc('name');
+        return $this->hasOne(Post::class, 'user_id', 'id')->orderByDesc('id');
     }
 
     public function category()

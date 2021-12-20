@@ -163,4 +163,38 @@ class RelationshipController extends Controller
     private function getAllPost() {
         return Post::all();
     }
+
+    public function conditionRelationship()
+    {
+        // Lấy ra những thằng User nào mà có viết bài
+        $users = User::has('post')->get();
+
+        // Lấy user có bài post, mà post thuộc category_id = 1
+        $post_name = 'name 1';
+        $users = User::whereHas('posts', function ($query) use ($post_name) {
+//            $query->where('category_id', 1)->where('name', $post_name);
+            $query->whereHas('category', function ($q1) {
+                $q1->where('user_id', 18);
+            });
+        })->get();
+        // Lấy user có bài post, mà post thuộc category_id = 1
+        $users = User::whereRelation('posts', 'category_id', 1)->get();
+
+        // Lay ra nhung th user khong co bai post nao
+        $users = User::doesntHave('post')->get();
+
+        // Lay ra nhung th user khong viet bai viet co category_id = 1
+        $users = User::whereDoesntHave('posts', function ($query) {
+//            $query->where('category_id', 1)->orWhere('category_id', 2);
+            $query->whereHas('category', function ($q1) {
+                $q1->where('user_id', 18);
+            });
+        })->get();
+
+        $users = User::whereDoesntHave('posts.category', function ($query) {
+            $query->where('user_id', 17);
+        })->get();
+
+        dd($users);
+    }
 }

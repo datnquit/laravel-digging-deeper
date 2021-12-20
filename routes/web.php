@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaginateController;
 use App\Http\Controllers\RelationshipController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\StudyController;
@@ -122,4 +123,7 @@ Route::prefix('relationship')->group(function() {
 
     // P4
     Route::get('all-post', [RelationshipController::class, 'allPost']);
+
+    // P5
+    Route::get('condition-relationship', [RelationshipController::class, 'conditionRelationship']);
 });
