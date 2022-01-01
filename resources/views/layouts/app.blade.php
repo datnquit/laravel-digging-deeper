@@ -74,7 +74,11 @@
                 </div>
             </div>
         </nav>
-
+        <nav class="nav">
+            @foreach(Menu::get() as $item)
+                <a class="nav-link active" href="{{ route($item['route']) }}">{{ $item['label'] }}</a>
+            @endforeach
+        </nav>
         <main class="py-4">
             @yield('content')
         </main>

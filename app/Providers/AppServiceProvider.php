@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Http\Middleware\SaveLocaleMiddleware;
+use App\Menu\Facade\MenuFacade;
+use App\Menu\MenuManager;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('menu', function() {
+            return new MenuManager();
+        });
+
 //        require_once __DIR__.'/../Helpers/Helpers.php';
 
 //        $file = app_path('Helpers/Helpers.php');
@@ -38,6 +44,12 @@ class AppServiceProvider extends ServiceProvider
         $this->bootMailConfig();
         $this->registerMiddleware();
         Paginator::useBootstrap();
+        $this->registerMenu();
+    }
+
+    protected function registerMenu() {
+        MenuFacade::add('home', 'home');
+        MenuFacade::add('paginate', 'paginate.index');
     }
 
     protected function registerMiddleware()

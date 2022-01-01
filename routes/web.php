@@ -23,7 +23,7 @@ Route::get('/', function () {
 //    event(new \App\Events\PodcastProcessed('dat', \App\Models\User::find(3)));
 //    \App\Events\PodcastProcessed::dispatch('dat', \App\Models\User::find(3));
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/fire-redis', function() {
     \App\Events\UserEvent::dispatch(\App\Models\User::find(3));
@@ -129,5 +129,5 @@ Route::prefix('relationship')->group(function() {
 });
 
 Route::prefix('paginate')->group(function () {
-    Route::get('index', [PaginateController::class, 'index']);
+    Route::get('index', [PaginateController::class, 'index'])->name('paginate.index');
 });

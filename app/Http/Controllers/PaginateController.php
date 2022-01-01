@@ -14,7 +14,7 @@ class PaginateController extends Controller
             $users->where('gender',$request->gender);
         }
         $users = $users->paginate(5);
-        return response()->json($users->items());
+//        return response()->json($users->items());
         return view('paginate-study', compact('users'));
     }
 }
